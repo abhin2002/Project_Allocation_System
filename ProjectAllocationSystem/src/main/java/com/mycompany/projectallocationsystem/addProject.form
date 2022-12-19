@@ -52,8 +52,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox2" min="-2" pref="136" max="-2" attributes="0"/>
-                              <Component id="jComboBox5" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="Combo1" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="combo3" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -67,13 +67,13 @@
                   <EmptySpace pref="95" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField2" pref="173" max="32767" attributes="0"/>
-                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="preKnowledge" pref="173" max="32767" attributes="0"/>
+                          <Component id="projectName" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jComboBox4" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Component id="combo2" min="-2" pref="136" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox3" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="projectSubmitBotton" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo4" min="-2" pref="136" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
@@ -88,26 +88,26 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBox1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="projectName" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="preKnowledge" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Combo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combo2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combo3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="projectSubmitBotton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="84" max="32767" attributes="0"/>
@@ -137,12 +137,12 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="projectName">
           <Properties>
             <Property name="text" type="java.lang.String" value="Project Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="preKnowledge">
           <Properties>
             <Property name="text" type="java.lang.String" value="Prerequisite knowledge"/>
           </Properties>
@@ -155,14 +155,20 @@
             <Property name="text" type="java.lang.String" value="Project Area"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="Combo1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Area 1"/>
-                <StringItem index="1" value="Area 2"/>
-                <StringItem index="2" value="Area 3"/>
-                <StringItem index="3" value="............"/>
+              <StringArray count="10">
+                <StringItem index="0" value="Artificial Inteligence"/>
+                <StringItem index="1" value="ML"/>
+                <StringItem index="2" value="Deep Learning"/>
+                <StringItem index="3" value="Quantum Computing"/>
+                <StringItem index="4" value="NLP"/>
+                <StringItem index="5" value="IOT"/>
+                <StringItem index="6" value="Cloud Computing"/>
+                <StringItem index="7" value="Bioinformatics"/>
+                <StringItem index="8" value="Digital Image Processing"/>
+                <StringItem index="9" value="Computer Vision"/>
               </StringArray>
             </Property>
           </Properties>
@@ -170,14 +176,20 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="combo4">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Area 1"/>
-                <StringItem index="1" value="Area 2"/>
-                <StringItem index="2" value="Area 3"/>
-                <StringItem index="3" value="............"/>
+              <StringArray count="10">
+                <StringItem index="0" value="Artificial Inteligence"/>
+                <StringItem index="1" value="ML"/>
+                <StringItem index="2" value="Deep Learning"/>
+                <StringItem index="3" value="Quantum Computing"/>
+                <StringItem index="4" value="NLP"/>
+                <StringItem index="5" value="IOT"/>
+                <StringItem index="6" value="Cloud Computing"/>
+                <StringItem index="7" value="Bioinformatics"/>
+                <StringItem index="8" value="Digital Image Processing"/>
+                <StringItem index="9" value="Computer Vision"/>
               </StringArray>
             </Property>
           </Properties>
@@ -185,14 +197,21 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox4">
+        <Component class="javax.swing.JComboBox" name="combo2">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Area 1"/>
-                <StringItem index="1" value="Area 2"/>
-                <StringItem index="2" value="Area 3"/>
-                <StringItem index="3" value="............"/>
+              <StringArray count="11">
+                <StringItem index="0" value="Artificial Inteligence"/>
+                <StringItem index="1" value="ML"/>
+                <StringItem index="2" value="Deep Learning"/>
+                <StringItem index="3" value="Quantum Computing"/>
+                <StringItem index="4" value="NLP"/>
+                <StringItem index="5" value="IOT"/>
+                <StringItem index="6" value="Cloud Computing"/>
+                <StringItem index="7" value="Bioinformatics"/>
+                <StringItem index="8" value="Digital Image Processing"/>
+                <StringItem index="9" value="Computer Vision"/>
+                <StringItem index="10" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -200,14 +219,20 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox5">
+        <Component class="javax.swing.JComboBox" name="combo3">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Area 1"/>
-                <StringItem index="1" value="Area 2"/>
-                <StringItem index="2" value="Area 3"/>
-                <StringItem index="3" value="............"/>
+              <StringArray count="10">
+                <StringItem index="0" value="Artificial Inteligence"/>
+                <StringItem index="1" value="ML"/>
+                <StringItem index="2" value="Deep Learning"/>
+                <StringItem index="3" value="Quantum Computing"/>
+                <StringItem index="4" value="NLP"/>
+                <StringItem index="5" value="IOT"/>
+                <StringItem index="6" value="Cloud Computing"/>
+                <StringItem index="7" value="Bioinformatics"/>
+                <StringItem index="8" value="Digital Image Processing"/>
+                <StringItem index="9" value="Computer Vision"/>
               </StringArray>
             </Property>
           </Properties>
@@ -215,10 +240,13 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="projectSubmitBotton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="projectSubmitBottonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>

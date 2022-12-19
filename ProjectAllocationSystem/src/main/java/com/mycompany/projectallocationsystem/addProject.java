@@ -4,6 +4,11 @@
  */
 package com.mycompany.projectallocationsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 91892
@@ -29,14 +34,14 @@ public class addProject extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        projectName = new javax.swing.JTextField();
+        preKnowledge = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Combo1 = new javax.swing.JComboBox<>();
+        combo4 = new javax.swing.JComboBox<>();
+        combo2 = new javax.swing.JComboBox<>();
+        combo3 = new javax.swing.JComboBox<>();
+        projectSubmitBotton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,22 +51,27 @@ public class addProject extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOD", "Professor" }));
 
-        jTextField1.setText("Project Name");
+        projectName.setText("Project Name");
 
-        jTextField2.setText("Prerequisite knowledge");
+        preKnowledge.setText("Prerequisite knowledge");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Project Area");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Area 1", "Area 2", "Area 3", "............" }));
+        Combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Area 1", "Area 2", "Area 3", "............" }));
+        combo4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Area 1", "Area 2", "Area 3", "............" }));
+        combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision", " " }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Area 1", "Area 2", "Area 3", "............" }));
+        combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
 
-        jButton1.setText("Submit");
+        projectSubmitBotton.setText("Submit");
+        projectSubmitBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                projectSubmitBottonActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
 
@@ -81,8 +91,8 @@ public class addProject extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Combo1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,12 +101,12 @@ public class addProject extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jTextField1))
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(preKnowledge, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                        .addComponent(projectName))
+                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(projectSubmitBotton)
+                        .addComponent(combo4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,22 +117,22 @@ public class addProject extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(preKnowledge, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Combo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(projectSubmitBotton)
                     .addComponent(jButton2))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
@@ -140,6 +150,28 @@ public class addProject extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void projectSubmitBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectSubmitBottonActionPerformed
+        String proName = projectName.getText();
+        String preKnwldg = preKnowledge.getText();
+        String a1 = (String)Combo1.getSelectedItem();
+        String a2 = (String)combo2.getSelectedItem();
+        String a3 = (String)combo3.getSelectedItem();
+        String a4 = (String)combo4.getSelectedItem();
+        
+        try{
+            //Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
+            Statement stml=con.createStatement();
+            String sql1 = "insert into project(proname,prereqeuisiteK,a1,a2,a3,a4) values('"+proName+"','"+preKnwldg+"','"+a1+"','"+a2+"','"+a3+"','"+a4+"')";
+            stml.executeUpdate(sql1);
+            JOptionPane.showMessageDialog(null,"Projects added");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_projectSubmitBottonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,17 +209,17 @@ public class addProject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> Combo1;
+    private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JComboBox<String> combo3;
+    private javax.swing.JComboBox<String> combo4;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField preKnowledge;
+    private javax.swing.JTextField projectName;
+    private javax.swing.JButton projectSubmitBotton;
     // End of variables declaration//GEN-END:variables
 }
