@@ -46,13 +46,19 @@ public class newProfessorDetails extends javax.swing.JFrame {
         username = new javax.swing.JTextField();
         p1 = new javax.swing.JTextField();
         p2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Professor Sign Up");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 45));
 
         pname.setText("Name");
+        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 102, 179, 31));
 
         pq.setText("Qualifications");
         pq.addActionListener(new java.awt.event.ActionListener() {
@@ -60,17 +66,24 @@ public class newProfessorDetails extends javax.swing.JFrame {
                 pqActionPerformed(evt);
             }
         });
+        jPanel2.add(pq, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 179, 59));
 
         combo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
+        jPanel2.add(combo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 218, 203, 31));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Knowledge Domain");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 108, 175, -1));
 
         combo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
+        jPanel2.add(combo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 167, 203, 31));
 
         combo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
+        jPanel2.add(combo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 267, 203, 31));
 
         combo4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artificial Inteligence", "ML", "Deep Learning", "Quantum Computing", "NLP", "IOT", "Cloud Computing", "Bioinformatics", "Digital Image Processing", "Computer Vision" }));
+        jPanel2.add(combo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 316, 203, 31));
 
         professorSubmit.setText("Submit");
         professorSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +91,7 @@ public class newProfessorDetails extends javax.swing.JFrame {
                 professorSubmitActionPerformed(evt);
             }
         });
+        jPanel2.add(professorSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 397, 98, 31));
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -85,74 +99,20 @@ public class newProfessorDetails extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 397, 98, 31));
 
         username.setText("Create Username");
+        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 218, 179, 31));
 
         p1.setText("Create Password");
+        jPanel2.add(p1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 271, 179, 27));
 
         p2.setText("Comfirm Password");
+        jPanel2.add(p2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 316, 179, 31));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pname, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pq, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                    .addComponent(username)
-                    .addComponent(p1)
-                    .addComponent(p2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(combo4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(combo1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(professorSubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(145, 145, 145))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pname, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(combo3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(p1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(combo4, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(p2))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(professorSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(149, 149, 149))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\91892\\Desktop\\Public\\DBMS_JAVA Project\\sky2.jpg")); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 540));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,7 +166,7 @@ public class newProfessorDetails extends javax.swing.JFrame {
             //Class.forName("com.mysql.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
             Statement stml=con.createStatement();
-            String sql1 = "insert into professor(pname,qualifications,area1,area2,area3,area4) values('"+name+"','"+qualification+"','"+area1+"','"+area2+"','"+area3+"','"+area4+"')";
+            String sql1 = "insert into professor(pname,qualifications,area1,area2,area3,area4,username,passwordd) values('"+name+"','"+qualification+"','"+area1+"','"+area2+"','"+area3+"','"+area4+"','"+uname+"','"+pass+"')";
             stml.executeUpdate(sql1);
             JOptionPane.showMessageDialog(null,"Sign in successfull");
         }
@@ -233,6 +193,7 @@ public class newProfessorDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField p1;

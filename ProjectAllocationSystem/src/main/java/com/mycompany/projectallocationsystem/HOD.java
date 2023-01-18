@@ -61,10 +61,25 @@ public class HOD extends javax.swing.JFrame {
         jLabel5.setText("Time to work");
 
         jButton1.setText("Professors");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Students");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Projects");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Project Allocation System");
 
@@ -77,16 +92,21 @@ public class HOD extends javax.swing.JFrame {
 
         jButton5.setText("Ok");
 
-        jButton4.setText("Remove/Update");
+        jButton4.setText("Add Professor");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Remove/Update");
+        jButton6.setText("Add Student");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        project_edit_button.setText("Add/Remove/Update");
+        project_edit_button.setText("Add Project");
         project_edit_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 project_edit_buttonActionPerformed(evt);
@@ -125,10 +145,11 @@ public class HOD extends javax.swing.JFrame {
                                 .addComponent(jButton5))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton4)
-                                .addGap(60, 60, 60)
+                                .addGap(86, 86, 86)
                                 .addComponent(jButton6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(project_edit_button))))
+                                .addComponent(project_edit_button)
+                                .addGap(17, 17, 17))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jButton1)
@@ -142,7 +163,7 @@ public class HOD extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                                 .addComponent(jButton3)
                                 .addGap(29, 29, 29)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +224,9 @@ public class HOD extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        newProfessorDetails NewProfessor = new newProfessorDetails();
+            NewProfessor.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void project_edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_project_edit_buttonActionPerformed
@@ -211,6 +235,32 @@ public class HOD extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_project_edit_buttonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Student_project_professor spp = new Student_project_professor();
+        spp.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        project_table prot = new project_table();
+        prot.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        professor_table pt = new professor_table();
+        pt.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        NewStudentDetails NewStudent = new NewStudentDetails();
+            NewStudent.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     /**
      * @param args the command line arguments

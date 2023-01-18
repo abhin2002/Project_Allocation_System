@@ -8,6 +8,7 @@ alter table student auto_increment = 1001;
 alter table student add sname varchar(500);
 alter table student modify semester char(50);
 alter table student add  (topic1 varchar(500), topic2 varchar(500), topic3 varchar(500), topic4 varchar(500));
+alter table student add  (username varchar(100),passwords varchar(200));
 
 
 
@@ -26,6 +27,9 @@ create table professor(
     pname varchar(200),
     qualifications varchar(500));
 alter table professor auto_increment = 101;
+desc professor;
+alter table professor add(username varchar(100),passwordd varchar(100));
+ 
 
 create table professorKD(
 	pid int,
@@ -62,10 +66,16 @@ insert into student(sname,course,semester,BtechOrPlustwo) values('abhin','imsc',
 delete from student where sid = 1002;
 select * from student;
 select * from professor;
+desc professor;
 delete from student;
 delete from professor;
 drop table projectArea;
 select * from project;
-
-
+desc project;
+alter table professor add(username,passwordd) values('madhusir','madhusir123') where pid = 1001;
+alter table student add(allocated_project varchar(100));
+desc student;
+update student set allocated_project = "101" where sid = "1003";
+delete allocated_project from student where sid = "1003";
+alter table student add(allocated_professor varchar(100));
     

@@ -4,18 +4,57 @@
  */
 package com.mycompany.projectallocationsystem;
 
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
+import java.util.Comparator;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author 91892
  */
 public class Student extends javax.swing.JFrame {
+    public ResultSet rs_student;
+    public ResultSet rs_project;
+    public String interestedTopics[];
+    public int allocatedProject = 0;
+    public String studentID;
+    public int allocatedProfessor = 0;
+    public ResultSet rs_professor;
+    public int rowCount = 0;
 
     /**
      * Creates new form Student
+     * @param rs
+     * @throws java.sql.SQLException
      */
-    public Student() {
+    public Student(ResultSet rs) throws SQLException {
         initComponents();
+        this.allocatedProject = rs.getInt("allocated_project");
+        interestedTopics = new String[4];
+        this.rs_student = rs;
+        System.out.print(this.rs_student);
+        this.setVisible(true);
+        for(int i=0;i<4;i++){
+            interestedTopics[i] = rs.getString(i+6);
+        }
+        this.studentID = rs.getString("sid");
+        System.out.println("Student id : "+this.studentID);
+            
+        jtextSid.setText(rs.getString("sid"));
+        jtextName.setText(rs.getString("sname"));
+        jtextCourse.setText(rs.getString("course"));
+        jtextSemester.setText(rs.getString("semester"));
+        jtextProject.setText(rs.getString("allocated_project"));
+        jtextProfessor.setText(rs.getString("allocated_professor"));
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,169 +73,426 @@ public class Student extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        getProject = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jtextSid = new javax.swing.JTextField();
+        jtextSemester = new javax.swing.JTextField();
+        jtextName = new javax.swing.JTextField();
+        jtextCourse = new javax.swing.JTextField();
+        jtextProfessor = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        Professor = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jtextProject = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Student");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Student ID :");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 74, 24));
 
         jLabel2.setText("Name");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 41, -1));
 
-        jLabel3.setText("email");
+        jLabel3.setText("Semester");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 60, -1));
 
         jLabel4.setText("Notice Board");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
 
         jButton1.setText("Log Book");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 104, -1));
 
         jButton2.setText("Gantt Chart");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 104, -1));
 
-        jButton3.setText("Project");
+        getProject.setText("Project");
+        getProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getProjectActionPerformed(evt);
+            }
+        });
+        jPanel2.add(getProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 104, -1));
 
         jLabel6.setText("Project Allocation System");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 137, -1));
 
-        jButton4.setText("Back");
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+        jPanel2.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
 
         jLabel5.setText("......................................................................................................................................................................");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, 79));
+        jPanel2.add(jtextSid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 103, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(204, 204, 204)
-                                .addComponent(jButton4))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(242, 242, 242))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(246, 246, 246)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(99, 99, 99))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton4))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel2))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel3))
-                .addGap(51, 51, 51)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        jtextSemester.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextSemesterActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jtextSemester, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 103, -1));
+
+        jtextName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextNameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jtextName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 103, -1));
+        jPanel2.add(jtextCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 103, -1));
+
+        jtextProfessor.setText(" ");
+        jPanel2.add(jtextProfessor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 103, -1));
+
+        jLabel7.setText("Project ID");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 86, -1));
+
+        Professor.setText("Professor");
+        Professor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProfessorActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Professor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 104, -1));
+
+        jLabel8.setText("Professor");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 86, -1));
+
+        jtextProject.setText(" ");
+        jPanel2.add(jtextProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 103, -1));
+
+        jLabel9.setText(" ");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 440));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtextNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextNameActionPerformed
+
+    private void jtextSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextSemesterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextSemesterActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        dispose();
+        login l = new login();
+        l.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void getProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getProjectActionPerformed
+        // TODO add your handling code here:
+        int [][] projectMatching = new int[3][2];
+            for(int i=0;i<3;i++){
+                projectMatching[i][1] = 0;
+            }
+        if(this.allocatedProject == 0){
+
+            
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
+                Statement stml=con.createStatement();
+                ResultSet rs=stml.executeQuery("select * from project");
+                
+            if(!rs.next())
+            {
+                JOptionPane.showMessageDialog(null,"No project available");
+                
+                
+                
+            }
+            else{
+                rs_project = rs;
+                
+                int projectid=0;
+                System.out.println("Projects : ");
+                //System.out.println(rs_project.getString(2));
+                do{ 
+                   
+                   projectMatching[projectid][0] = rs.getInt("prid");
+                   
+                   for(int i =0;i<4;i++){
+                       for(int j=0;j<4;j++){
+                           if(interestedTopics[i] == null ? rs.getString(j+4) == null : interestedTopics[i].equals(rs.getString(j+4))){
+                               projectMatching[projectid][1]++;
+                           }
+                       }
+                   }
+                   System.out.println(rs_project.getString(2)); 
+                   projectid++;
+                }while(rs.next());
+                
+            }
+        }
+        catch(HeadlessException | ClassNotFoundException | SQLException e){
+            System.out.println(e);
+        }
+            
+            
+            for(int i =0;i<3;i++){
+            for(int j=0;j<2;j++){
+                System.out.print(projectMatching[i][j]+" ");   
+            }
+            System.out.println(" ");
+        }
+        
+        Arrays.sort(projectMatching, (final int [] entry1, final int[] entry2) -> {
+            if(entry1[1] > entry2[1])
+                return 1;
+            else
+                return -1;
+        });
+        
+        System.out.println(" ");
+        System.out.println("After sort : ");
+        System.out.println(" ");
+        for(int i =0;i<3;i++){
+            for(int j=0;j<2;j++){
+                System.out.print(projectMatching[i][j]+" ");   
+            }
+            System.out.println(" ");
+        }
+        
+        try{
+            //Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
+            Statement stml=con.createStatement();
+            String sql1 = "update student set allocated_project = '"+projectMatching[2][0]+"' where sid = '"+studentID+"'";
+            stml.executeUpdate(sql1);
+            JOptionPane.showMessageDialog(null,"New Project "+projectMatching[2][0]+" added");
+            jtextProject.setText(String.valueOf(projectMatching[2][0]));
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        this.allocatedProject = projectMatching[2][0];
+        
+        
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null,"Project is "+allocatedProject);
+        }
+        
+        
+        
+    }//GEN-LAST:event_getProjectActionPerformed
+
+    private void ProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfessorActionPerformed
+        // TODO add your handling code here:
+        int [][] professorMatching = new int[2][2];
+            for(int i=0;i<2;i++){
+                professorMatching[i][1] = 0;
+            }
+        if(this.allocatedProfessor == 0){
+//            for(int i=0;i<4;i++){
+//                System.out.println(interestedTopics[i]);
+//            }
+            
+            
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
+                Statement stml=con.createStatement();
+                ResultSet rs=stml.executeQuery("select * from professor");
+                
+            if(!rs.next())
+            {
+                JOptionPane.showMessageDialog(null,"No professor available");
+                
+                
+                
+            }
+            else{
+                rs_professor = rs;
+                int projectid=0;
+                System.out.println("Professors : ");
+                //System.out.println(rs_project.getString(2));
+                do{ 
+                   
+                   professorMatching[projectid][0] = rs.getInt("pid");
+                   
+                   for(int i =0;i<4;i++){
+                       for(int j=0;j<4;j++){
+                           if(interestedTopics[i] == null ? rs.getString(j+4) == null : interestedTopics[i].equals(rs.getString(j+4))){
+                               professorMatching[projectid][1]++;
+                           }
+                       }
+                   }
+                   System.out.println(rs_professor.getString(2)); 
+                   projectid++;
+                }while(rs.next());
+                
+//                Sign_in s = new Sign_in();
+//                s.setVisible(true);
+//                this.setVisible(false);
+//                s.pack();
+//                s.setLocation(null);
+//                s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        }
+        catch(HeadlessException | ClassNotFoundException | SQLException e){
+            System.out.println(e);
+        }
+            
+            
+            for(int i =0;i<2;i++){
+            for(int j=0;j<2;j++){
+                System.out.print(professorMatching[i][j]+" ");   
+            }
+            System.out.println(" ");
+        }
+        
+        Arrays.sort(professorMatching, (final int [] entry1, final int[] entry2) -> {
+            if(entry1[1] > entry2[1])
+                return 1;
+            else
+                return -1;
+        });
+        
+//        for(int i =0;i<3;i++){
+//            for(int j=0;j<2;j++){
+//                if(projectMatching[i][1] > projectMatching[j+1][1]){
+//                    int[] temp = new int[2];
+//                    temp[0] = projectMatching[i][0];
+//                    temp[1] = projectMatching[i][1];
+//                    projectMatching[i][0] = projectMatching[j+1][0];
+//                    projectMatching[i][1] = projectMatching[j+1][1];
+//                    projectMatching[j+1][0] = temp[0];
+//                    projectMatching[j+1][0] = temp[1];
+//                }
+//               
+//            }
+//            
+//        }
+        System.out.println(" ");
+        System.out.println("After sort : ");
+        System.out.println(" ");
+        for(int i =0;i<2;i++){
+            for(int j=0;j<2;j++){
+                System.out.print(professorMatching[i][j]+" ");   
+            }
+            System.out.println(" ");
+        }
+        
+        try{
+            //Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectallocationsystem","root","root");
+            Statement stml=con.createStatement();
+            String sql1 = "update student set allocated_professor = '"+professorMatching[1][0]+"' where sid = '"+studentID+"'";
+            stml.executeUpdate(sql1);
+            JOptionPane.showMessageDialog(null,"New allocated professor is"+professorMatching[1][0]);
+            jtextProfessor.setText(String.valueOf(professorMatching[1][0]));
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        this.allocatedProfessor = professorMatching[1][0];
+        
+        
+        }
+    
+        else{
+            JOptionPane.showMessageDialog(null,"Professor is "+allocatedProfessor);
+        }
+    }//GEN-LAST:event_ProfessorActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Student().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Student.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Student().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Professor;
+    private javax.swing.JButton back;
+    private javax.swing.JButton getProject;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jtextCourse;
+    private javax.swing.JTextField jtextName;
+    private javax.swing.JTextField jtextProfessor;
+    private javax.swing.JTextField jtextProject;
+    private javax.swing.JTextField jtextSemester;
+    private javax.swing.JTextField jtextSid;
     // End of variables declaration//GEN-END:variables
+
+    private JTextField setText(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
